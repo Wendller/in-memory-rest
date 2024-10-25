@@ -1,6 +1,8 @@
 package repositories
 
-import "github.com/in-memory-rest/database"
+import (
+	"github.com/in-memory-rest/internal/database"
+)
 
 type UserRepo interface {
 	FindAll() []database.UserSchema

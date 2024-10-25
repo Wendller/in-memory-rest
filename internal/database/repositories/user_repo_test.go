@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"github.com/google/uuid"
-	"github.com/in-memory-rest/database"
+	"github.com/in-memory-rest/internal/database"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

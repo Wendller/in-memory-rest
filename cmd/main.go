@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/google/uuid"
-	"github.com/in-memory-rest/database"
-	"github.com/in-memory-rest/database/repositories"
+	"github.com/in-memory-rest/internal/database"
+	"github.com/in-memory-rest/internal/database/repositories"
 )
 
 func main() {

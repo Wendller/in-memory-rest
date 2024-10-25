@@ -1,6 +1,8 @@
 package repositories
 
-import "github.com/in-memory-rest/database"
+import (
+	"github.com/in-memory-rest/internal/database"
+)
 
 type Repo struct {
 	UserRepo *UserInMemoryRepo
