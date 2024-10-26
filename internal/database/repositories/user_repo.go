@@ -2,7 +2,6 @@ package repositories
 
 import (
 	"github.com/google/uuid"
-	"github.com/in-memory-rest/internal"
 	"github.com/in-memory-rest/internal/database"
 	"github.com/in-memory-rest/internal/domain"
 )
@@ -46,7 +45,7 @@ func (ur *UserInMemoryRepo) Insert(firstName, lastName, biography string) (datab
 func (ur *UserInMemoryRepo) FindById(id database.ID) (database.UserSchema, error) {
 	u, ok := ur.DB[id]
 	if !ok {
-		return database.UserSchema{}, internal.ErrResourceNotFound
+		return database.UserSchema{}, domain.ErrResourceNotFound
 	}
 
 	return u, nil
@@ -70,7 +69,7 @@ func listMapValues[K comparable, V any](hashMap map[K]V) []V {
 func (ur *UserInMemoryRepo) Update(id database.ID, user domain.User) (database.UserSchema, error) {
 	u, ok := ur.DB[id]
 	if !ok {
-		return database.UserSchema{}, internal.ErrResourceNotFound
+		return database.UserSchema{}, domain.ErrResourceNotFound
 	}
 
 	if user.FirstName != "" {
@@ -91,7 +90,7 @@ func (ur *UserInMemoryRepo) Update(id database.ID, user domain.User) (database.U
 func (ur *UserInMemoryRepo) Delete(id database.ID) (database.UserSchema, error) {
 	u, ok := ur.DB[id]
 	if !ok {
-		return database.UserSchema{}, internal.ErrResourceNotFound
+		return database.UserSchema{}, domain.ErrResourceNotFound
 	}
 
 	delete(ur.DB, id)

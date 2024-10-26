@@ -2,7 +2,6 @@ package repositories
 
 import (
 	"github.com/google/uuid"
-	"github.com/in-memory-rest/internal"
 	"github.com/in-memory-rest/internal/database"
 	"github.com/in-memory-rest/internal/domain"
 	"github.com/stretchr/testify/assert"
@@ -66,7 +65,7 @@ func TestFindById(t *testing.T) {
 		u, err := userRepo.FindById(id)
 
 		assert.NotEqual(t, id, u.Id)
-		assert.ErrorIs(t, err, internal.ErrResourceNotFound)
+		assert.ErrorIs(t, err, domain.ErrResourceNotFound)
 	})
 }
 
@@ -110,7 +109,7 @@ func TestUpdate(t *testing.T) {
 
 		_, err := userRepo.Update(uuid.New(), updateParam)
 
-		assert.ErrorIs(t, err, internal.ErrResourceNotFound)
+		assert.ErrorIs(t, err, domain.ErrResourceNotFound)
 	})
 }
 
@@ -130,6 +129,6 @@ func TestDelete(t *testing.T) {
 
 		_, err := userRepo.Delete(uuid.New())
 
-		assert.ErrorIs(t, err, internal.ErrResourceNotFound)
+		assert.ErrorIs(t, err, domain.ErrResourceNotFound)
 	})
 }
