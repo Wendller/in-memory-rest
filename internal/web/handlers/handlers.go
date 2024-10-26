@@ -12,8 +12,8 @@ type Handlers struct {
 }
 
 type Response struct {
-	Error string `json:"error,omitempty"`
-	Data  any    `json:"data,omitempty"`
+	Error any `json:"error,omitempty"`
+	Data  any `json:"data,omitempty"`
 }
 
 func sendJSON(w http.ResponseWriter, resp Response, status int) {

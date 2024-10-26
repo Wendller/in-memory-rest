@@ -21,6 +21,10 @@ func SetupRoutes(router *chi.Mux, handlers *handlers.Handlers) {
 func userRouter(userHandler handlers.UserHandler) http.Handler {
 	r := chi.NewRouter()
 	r.Get("/", userHandler.GetAllUsers)
+	r.Get("/{id}", userHandler.GetUserById)
+	r.Post("/", userHandler.Insert)
+	r.Put("/{id}", userHandler.Update)
+	r.Delete("/{id}", userHandler.DeleteUserById)
 
 	return r
 }

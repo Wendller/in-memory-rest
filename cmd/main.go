@@ -20,7 +20,6 @@ func main() {
 		return
 	}
 
-	fmt.Println("start listening on port :8080")
 	slog.Info("all systems initialized")
 }
 
