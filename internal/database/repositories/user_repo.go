@@ -53,10 +53,13 @@ func (ur *UserInMemoryRepo) FindById(id database.ID) (database.UserSchema, error
 
 func (ur *UserInMemoryRepo) FindAll() []database.UserSchema {
 	return listMapValues(ur.DB)
-
 }
 
 func listMapValues[K comparable, V any](hashMap map[K]V) []V {
+	if len(hashMap) == 0 {
+		return make([]V, 0)
+	}
+
 	var values []V
 
 	for _, v := range hashMap {

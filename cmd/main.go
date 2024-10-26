@@ -4,14 +4,24 @@ import (
 	"fmt"
 	"github.com/fatih/structs"
 	"github.com/google/uuid"
+	"github.com/in-memory-rest/configs"
 	"github.com/in-memory-rest/internal/database"
 	"github.com/in-memory-rest/internal/database/repositories"
 	"github.com/in-memory-rest/pkg"
+	"log/slog"
+	"net/http"
 )
 
 func main() {
-	fmt.Println("Hello World")
-	run()
+	cfg := configs.LoadConfig()
+
+	if err := http.ListenAndServe("localhost:8080", cfg.Router); err != nil {
+		slog.Error("application initialize error", "error", err)
+		return
+	}
+
+	fmt.Println("start listening on port :8080")
+	slog.Info("all systems initialized")
 }
 
 func run() error {
